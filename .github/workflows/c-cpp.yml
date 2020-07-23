@@ -14,7 +14,9 @@ jobs:
     - name: prereq
       run: sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev
     - name: arch
-      run: sudo dpkg --add-architecture arm64
+      run: |
+        sudo dpkg --add-architecture arm64
+        sudo echo "deb mirror://mirrors.ubuntu.com/mirrors.txt bionic main restricted" >> /etc/apt/sources.list
     - name: arch
       run:     sudo apt-get update | true
     - name: arch
