@@ -16,7 +16,7 @@ jobs:
     - name: arch
       run: sudo dpkg --add-architecture arm64
     - name: arch
-      run:     sudo apt-get update
+      run:     sudo apt-get update | true
     - name: arch
       run:    sudo apt-get install libcairo2-dev:arm64 libgif-dev:arm64 libglib2.0-dev:arm64 libtiff-dev:arm64 libexif-dev:arm64
     - name: Install NDK
