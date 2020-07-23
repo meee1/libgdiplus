@@ -14,13 +14,17 @@ jobs:
     - name: prereq
       run: sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev
     - name: autogen
-      run: UNAME=Android CROSS_COMPILE=arm-linux-androideabi- CC=arm-linux-androideabi-gcc ./autogen.sh  --enable-static
-    - name: configure
-      run: ./configure
+      run: ./autogen.sh  --enable-static -host=arm-linux-androideabi
     - name: make
       run: |
         make
         ls
         ls src/.libs
-      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        # Artifact name
+        name: libs.zip
+        # A file, directory or wildcard pattern that describes what to upload
+        path: src/.libs/
 
