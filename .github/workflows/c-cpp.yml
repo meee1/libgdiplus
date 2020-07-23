@@ -16,9 +16,6 @@ jobs:
     - name: arch
       run: |
         sudo dpkg --add-architecture arm64
-        
-        sudo echo "deb http://au.archive.ubuntu.com/ubuntu/ bionic main restricted" >> /etc/apt/sources.list
-        sudo echo "deb mirror://mirrors.ubuntu.com/mirrors.txt bionic main restricted" >> /etc/apt/sources.list
     - name: arch
       run:     sudo apt-get update | true
     - name: arch
