@@ -14,7 +14,7 @@ jobs:
     - name: prereq
       run: sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev
     - name: autogen
-      run: ./autogen.sh  --enable-static
+      run: UNAME=Android CROSS_COMPILE=arm-linux-androideabi- CC=arm-linux-androideabi-gcc ./autogen.sh  --enable-static
     - name: configure
       run: ./configure
     - name: make
