@@ -14,13 +14,13 @@ jobs:
     - name: prereq
       run: sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev
     - name: autogen
-      run: ./autogen.sh
+      run: ./autogen.sh  --enable-static
     - name: configure
-      run: ./configure --enable-static
+      run: ./configure
     - name: make
       run: |
         make
         ls
-        ls lib
+        ls src/.libs
       
 
