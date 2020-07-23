@@ -22,8 +22,6 @@ jobs:
         export PATH=`pwd`/android-ndk-r20:`pwd`/android-ndk-r20/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:`pwd`/android-ndk-r20/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
         export SYSROOT=$ANDROID_NDK_ROOT/platforms/android-24/arch-arm64
         ./autogen.sh  --enable-static -host=aarch64-linux-android
-    - name: make
-      run: |
         make
         ls
         ls src/.libs
