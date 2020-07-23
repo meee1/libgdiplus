@@ -20,6 +20,8 @@ jobs:
         make
         ls
         ls src/.libs
+    - name: file info
+      run: file src/.libs/libgdiplus.so
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
