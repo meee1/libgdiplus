@@ -37,7 +37,7 @@ jobs:
         # Tell configure what flags Android requires.
         export CFLAGS="-fPIE -fPIC"
         export LDFLAGS="-pie"
-        ./autogen.sh  --enable-static -host=aarch64-linux-android
+        ./autogen.sh  --enable-static --without-x11 --without-libexif -host=aarch64-linux-android
         make
         ls
         ls src/.libs
