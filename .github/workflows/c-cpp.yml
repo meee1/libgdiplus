@@ -21,6 +21,18 @@ jobs:
         export ANDROID_SDK_ROOT=/usr/local/android-sdk 
         export PATH=`pwd`/android-ndk-r20:`pwd`/android-ndk-r20/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:`pwd`/android-ndk-r20/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
         export SYSROOT=$ANDROID_NDK_ROOT/platforms/android-24/arch-arm64
+        # Tell configure what tools to use.
+        target_host=aarch64-linux-android
+        export AR=$target_host-ar
+        export AS=$target_host-clang
+        export CC=$target_host-clang
+        export CXX=$target_host-clang++
+        export LD=$target_host-ld
+        export STRIP=$target_host-strip
+
+        # Tell configure what flags Android requires.
+        export CFLAGS="-fPIE -fPIC"
+        export LDFLAGS="-pie"
         ./autogen.sh  --enable-static -host=aarch64-linux-android
         make
         ls
