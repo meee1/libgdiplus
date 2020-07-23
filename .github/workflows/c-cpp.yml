@@ -19,7 +19,7 @@ jobs:
         unzip android-ndk-r20-linux-x86_64.zip 
         export ANDROID_NDK_ROOT=`pwd`/android-ndk-r20 
         export ANDROID_SDK_ROOT=/usr/local/android-sdk 
-        export PATH=`pwd`/android-ndk-r20:$PATH
+        export PATH=`pwd`/android-ndk-r20:`pwd`/android-ndk-r20/bin:$PATH
         export SYSROOT=$ANDROID_NDK_ROOT/platforms/android-20/arch-arm
         export CC=aarch64-linux-android-gcc --sysroot=$SYSROOT"
         ./autogen.sh  --enable-static -host=aarch64-linux-android
