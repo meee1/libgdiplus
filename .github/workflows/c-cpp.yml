@@ -18,7 +18,7 @@ jobs:
     - name: arch
       run:     sudo apt-get update | true
     - name: arch
-      run:    sudo apt-get install libcairo2-dev:arm64 libgif-dev:arm64 libglib2.0-dev:arm64 libtiff-dev:arm64 libexif-dev:arm64
+      run:    sudo apt-get install libcairo2-dev:arm64
     - name: Install NDK
       run: |
         wget --quiet https://dl.google.com/android/repository/android-ndk-r20-linux-x86_64.zip 
