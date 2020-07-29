@@ -11,6 +11,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: arch
+      run: |
+        set -x
+        sudo dpkg --add-architecture arm64
+        sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ xenial main restricted" >> /etc/apt/sources.list
+        sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ xenial universe" >> /etc/apt/sources.list
+        sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ xenial main restricted" >> /etc/apt/sources.list
+        sudo apt-get update
+        sudo apt-get install libcairo2-dev:arm64
     - name: prereq
       run: sudo apt-get update && sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev wget curl    speech-dispatcher    libgstreamer-plugins-base1.0-dev     libgstreamer1.0-0:amd64     libgstreamer1.0-dev     libudev-dev android-sdk
     - name: Setup Java
@@ -19,8 +28,9 @@ jobs:
         java-version: 1.8
     - name: Install NDK
       run: |
+        set -x
         wget --quiet https://dl.google.com/android/repository/android-ndk-r20-linux-x86_64.zip 
-        unzip android-ndk-r20-linux-x86_64.zip 
+        unzip android-ndk-r20-linux-x86_64.zip > /dev/null
         export ANDROID_NDK_ROOT=`pwd`/android-ndk-r20 
         export PATH=`pwd`/android-ndk-r20:`pwd`/android-ndk-r20/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:`pwd`/android-ndk-r20/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
 
