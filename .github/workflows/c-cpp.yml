@@ -15,6 +15,7 @@ jobs:
       run: |
         set -x
         sudo dpkg --add-architecture arm64
+        cat /etc/apt/sources.list
         sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" >> /etc/apt/sources.list
         sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic universe" >> /etc/apt/sources.list
         sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" >> /etc/apt/sources.list
