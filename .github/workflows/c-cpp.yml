@@ -16,9 +16,9 @@ jobs:
         set -x
         sudo dpkg --add-architecture arm64
 
-        sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" >> /etc/apt/sources.list.d/arm64.list
-        sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic universe" >> /etc/apt/sources.list.d/arm64.list
-        sudo echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" >> /etc/apt/sources.list.d/arm64.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic universe" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
         sudo apt-get update
         sudo apt-get install libcairo2-dev:arm64
     - name: prereq
