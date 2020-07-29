@@ -16,9 +16,11 @@ jobs:
         set -x                
         sudo apt-get update
 
-        echo "deb [arch=amd64,arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
-        echo "deb [arch=amd64,arm64] http://ports.ubuntu.com/ bionic universe" | sudo tee -a /etc/apt/sources.list
-        echo "deb [arch=amd64,arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic universe" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic multiverse" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
+        echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
         sudo dpkg --add-architecture arm64
         sudo apt-get update | true
         sudo apt-get install -y libcairo2-dev:arm64
