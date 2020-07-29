@@ -23,11 +23,6 @@ jobs:
         #echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
         #echo "deb [arch=arm64] http://ports.ubuntu.com/ bionic main restricted" | sudo tee -a /etc/apt/sources.list
         
-        sudo apt-get source libcairo2-dev
-        
-        ls -al
-        
-        #pbuilder-dist bionic arm64 create
         
     - name: prereq
       run: sudo apt-get update && sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev wget curl    speech-dispatcher    libgstreamer-plugins-base1.0-dev     libgstreamer1.0-0:amd64     libgstreamer1.0-dev     libudev-dev android-sdk
