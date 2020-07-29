@@ -12,22 +12,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: prereq
-      run: sudo apt-get update && sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev
-    - name: arch
-      run: |
-        sudo dpkg --add-architecture arm64
-    - name: arch
-      run:     sudo apt-get update | true
-    - name: arch
-      run:    sudo apt-get build-dep -a arm64 libcairo2-dev
+      run: sudo apt-get update && sudo apt-get install libgif-dev autoconf libtool automake build-essential gettext libglib2.0-dev libcairo2-dev libtiff-dev libexif-dev wget curl    speech-dispatcher    libgstreamer-plugins-base1.0-dev     libgstreamer1.0-0:amd64     libgstreamer1.0-dev     libudev-dev android-sdk
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
     - name: Install NDK
       run: |
         wget --quiet https://dl.google.com/android/repository/android-ndk-r20-linux-x86_64.zip 
         unzip android-ndk-r20-linux-x86_64.zip 
         export ANDROID_NDK_ROOT=`pwd`/android-ndk-r20 
-        export ANDROID_SDK_ROOT=/usr/local/android-sdk 
         export PATH=`pwd`/android-ndk-r20:`pwd`/android-ndk-r20/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:`pwd`/android-ndk-r20/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
-        export SYSROOT=$ANDROID_NDK_ROOT/platforms/android-24/arch-arm64
+
         # Tell configure what tools to use.
         export AR=aarch64-linux-android-ar
         export AS=aarch64-linux-android-as
